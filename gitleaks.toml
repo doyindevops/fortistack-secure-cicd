@@ -1,0 +1,21 @@
+title = "FortiStack Gitleaks Rules"
+
+[[rules]]
+description = "AWS Access Key"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["AWS", "key"]
+
+[[rules]]
+description = "AWS Secret Key"
+regex = '''(?i)aws(.{0,20})?(?-i)['\"][0-9a-zA-Z/+]{40}['\"]'''
+tags = ["AWS", "secret"]
+
+[[rules]]
+description = "Slack webhook"
+regex = '''https://hooks.slack.com/services/T[a-zA-Z0-9_]+/B[a-zA-Z0-9_]+/'''
+tags = ["slack", "webhook"]
+
+[[rules]]
+description = "Generic password"
+regex = '''(?i)(password|pwd|pass)[\s"']*[:=][\s"']*[^\s"']+'''
+tags = ["password"]

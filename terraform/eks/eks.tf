@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 variable "vpc_id" {
   description = "VPC ID for the EKS cluster"
   type        = string
@@ -38,13 +40,10 @@ resource "aws_eks_cluster" "main" {
 
   vpc_config {
     subnet_ids         = var.subnet_ids
-
-    #  Lock down public endpoint
     endpoint_public_access  = false
     endpoint_private_access = true
   }
 
-  #  Control plane logging
   enabled_cluster_log_types = [
     "api",
     "audit",
@@ -53,16 +52,16 @@ resource "aws_eks_cluster" "main" {
     "scheduler"
   ]
 
-  #  KMS Encryption (optional, can create a key and reference it)
-  # encryption_config {
-  #   resources = ["secrets"]
-  #   provider {
-  #     key_arn = "arn:aws:kms:your-custom-kms-key"
-  #   }
-  # }
+  encryption_config {
+    resources = ["secrets"]
+    provider {
+      key_arn = "arn:aws:kms:us-east-1:${data.aws_caller_identity.current.account_id}:alias/aws/eks"
+    }
+  }
 
   depends_on = [aws_iam_role_policy_attachment.eks_cluster_policy]
 }
+
 
 output "cluster_endpoint" {
   value = aws_eks_cluster.main.endpoint

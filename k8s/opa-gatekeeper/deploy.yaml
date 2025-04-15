@@ -1,0 +1,29 @@
+# k8s/opa-gatekeeper/deploy.yaml
+# Official Gatekeeper installation manifest
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gatekeeper-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatekeeper-controller-manager
+  namespace: gatekeeper-system
+labels:
+  control-plane: controller-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+        - command:
+            - /manager
+          image: openpolicyagent/gatekeeper:v3.13.0
+          name: manager

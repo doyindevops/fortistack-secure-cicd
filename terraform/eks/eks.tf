@@ -37,8 +37,41 @@ resource "aws_eks_cluster" "main" {
   role_arn = aws_iam_role.eks_role.arn
 
   vpc_config {
-    subnet_ids = var.subnet_ids
+    subnet_ids         = var.subnet_ids
+
+    #  Lock down public endpoint
+    endpoint_public_access  = false
+    endpoint_private_access = true
   }
 
+  #  Control plane logging
+  enabled_cluster_log_types = [
+    "api",
+    "audit",
+    "authenticator",
+    "controllerManager",
+    "scheduler"
+  ]
+
+  #  KMS Encryption (optional, can create a key and reference it)
+  # encryption_config {
+  #   resources = ["secrets"]
+  #   provider {
+  #     key_arn = "arn:aws:kms:your-custom-kms-key"
+  #   }
+  # }
+
   depends_on = [aws_iam_role_policy_attachment.eks_cluster_policy]
+}
+
+output "cluster_endpoint" {
+  value = aws_eks_cluster.main.endpoint
+}
+
+output "cluster_certificate_authority_data" {
+  value = aws_eks_cluster.main.certificate_authority[0].data
+}
+
+output "cluster_name" {
+  value = aws_eks_cluster.main.name
 }

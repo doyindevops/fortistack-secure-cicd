@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fortistack-app
+  namespace: fortistack
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fortistack-app
+  template:
+    metadata:
+      labels:
+        app: fortistack-app
+    spec:
+      containers:
+        - name: fortistack-app
+          image: 589802233850.dkr.ecr.us-east-1.amazonaws.com/fortistack-ecr-repo:latest
+          ports:
+            - containerPort: 3000

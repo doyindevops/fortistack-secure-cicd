@@ -52,7 +52,7 @@ Developer → GitHub → CI/CD → AWS ECR → EKS → Load Balancer → End Use
 
 ## 🔐 Security Layers Implemented
 
-| Layer            | Tool        | Purpose                                    |
+|Layer            | Tool        | Purpose                                    |
 |------------------|-------------|--------------------------------------------|
 | Secrets Scanning | Gitleaks    | Prevent credentials from entering repo     |
 | IaC Security     | Checkov     | Static analysis of Terraform configuration |
@@ -81,27 +81,6 @@ Developer → GitHub → CI/CD → AWS ECR → EKS → Load Balancer → End Use
 
 ---
 
-## ⚙️ How to Clone and Deploy
-
-```bash
-# Clone repository
-git clone https://github.com/your-username/fortistack-secure-cicd.git
-cd fortistack-secure-cicd
-
-# Set AWS credentials (IAM user with programmatic access)
-export AWS_ACCESS_KEY_ID=your_access_key
-export AWS_SECRET_ACCESS_KEY=your_secret_key
-
-# Initialize and apply Terraform (creates infrastructure)
-cd terraform
-terraform init
-terraform apply
-
-# App deployment happens automatically on push to `main` branch
-```
-
----
-
 ## 🗂 Final Folder Structure
 
 ```
@@ -125,7 +104,7 @@ fortistack-secure-cicd/
 │       ├── deployment.yaml
 │       └── service.yaml
 ├── images/
-│   ├── all screenshots (15+)
+│   ├── all screenshots (13)
 ├── videos/
 │   └── all walkthrough videos (10)
 ├── gitleaks.toml

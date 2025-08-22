@@ -4,21 +4,6 @@ This project showcases a production-grade DevSecOps pipeline built from scratch.
 
 > 🧑‍💻 Solo Project | DevSecOps | AWS | GitHub Actions | EKS | Terraform
 
----
-
-## ✅ README Highlights
-
-- **Title & Introduction**: Present and clear.
-- **Tech Stack Summary**: Well-structured with all key tools.
-- **Pipeline Architecture & Flow**: Included with both ASCII and text diagrams.
-- **Security Layers**: Clearly outlined with Gitleaks, Checkov, and Trivy.
-- **Infrastructure Breakdown**: Fully documented (VPC, EKS, ECR, IAM, etc.).
-- **Application Summary**: Node.js app explanation and deployment.
-- **Deployment Instructions**: Clone, set credentials, Terraform, CI/CD trigger.
-- **Folder Structure Overview**: Provided with detailed breakdown.
-- **Screenshots & Gallery**: Linked to `GALLERY.md`.
-- **Video Series Placeholder**: YouTube title and context noted.
-- **Author Info**: Added at the end.
 
 ---
 

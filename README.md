@@ -120,7 +120,7 @@ fortistack-secure-cicd/
 **Title:** DevSecOps in Action: Secure Cloud-Native Pipeline with GitHub Actions  
 ✅ Full explanation and project walkthrough  
 ✅ From infrastructure provisioning to app deployment  
-📺 *YouTube link to be added*
+📺 https://www.youtube.com/playlist?list=PL7KUROV69G9ENDYB7a6O94zpMp_0Ism12
 
 ---
 
